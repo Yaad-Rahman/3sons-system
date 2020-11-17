@@ -5,7 +5,7 @@ export default class Navbar extends Component {
     render() {
         return (
 
-                <nav className="navbar navbar-expand-sm navbar-dark fixed-top" style={{background: "#0E131F", }}>
+                <nav className="navbar navbar-expand-md navbar-dark fixed-top" style={{background: "#0E131F", }}>
                 <div className="col">
                 <a className="navbar-brand" href="/">3 Sons</a>
                 </div>
@@ -32,7 +32,8 @@ export default class Navbar extends Component {
                 <a className="nav-link" href="#">Link 3</a>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link btn btn-outline-primary rounded-pill px-3 " to="/register">Join Now</Link>
+                <Link className="nav-link btn btn-primary rounded-pill px-3 text-white " to="/register">
+                <i class="fa fa-play-circle mr-2" aria-hidden="true"></i>Join</Link>
                 </li>
                 <li className="nav-item">
                 <a className="nav-link btn btn-outline-primary rounded-pill px-3 ml-3 " href="#">Login</a>

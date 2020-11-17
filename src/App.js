@@ -7,6 +7,7 @@ import Profile from './components/User-profile';
 import Register from './components/Register';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import JobAid from './components/Job-Aid';
 
 
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/register" exact>
             <Register />
+          </Route>
+          <Route path="/job-aid" exact>
+            <JobAid />
           </Route>
         </Switch>
         <Footer />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class Course extends React.Component {
   render () {
@@ -15,7 +16,7 @@ class Course extends React.Component {
                       <li>{this.props.detail3}</li>
                   </ul>
               </p>
-              <a href="#" className="btn btn-danger">See Details</a>
+              <Link to={this.props.link} className="btn btn-danger">See Details</Link>
           </div>
       </div>
     )
