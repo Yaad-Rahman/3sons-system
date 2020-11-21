@@ -1,5 +1,6 @@
 import React from 'react'
 import "./register.css";
+import { Formik } from 'formik';
 
 class Register extends React.Component {
   render () {
@@ -21,20 +22,124 @@ class Register extends React.Component {
 
             <h1 style={{fontWeight: "bold"}}>Register</h1>
 
-            <form>
+            <Formik
+            initialValues ={{
+              username: '',
+              email: '',
+              password: '',
+              confirm_password: '',
+              gender: '',
+              address: '',
+            }}
 
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" />  
-            </div>
+            validate={ values => {
+              const errors ={};
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" />
-              <small id="emailHelp" class="form-text text-muted">Your Email will be safe</small>
-            </div>
+              if(values.username.length < 2){
+                errors.username = "Too Short";
+              } else if (values.username.length > 10){
+                errors.username = "Too Long";
+              }
 
-            </form>
+              if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
+                errors.email = "Invalid email address";
+              }
+
+              if(values.password.length < 5){
+                errors.password = "Password too short";
+              } else if (values.password.length > 10){
+                errors.password = "Password too Long";
+              }
+
+              if(values.confirm_password != values.password){
+                errors.confirm_password = "Password not matched !";
+              }
+
+              return errors;
+
+            }}
+
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+            }}
+            >
+
+              {({
+                      values,
+                      errors,
+                      touched,
+                      handleChange,
+                      handleBlur,
+                      handleSubmit,
+                      isSubmitting,
+                      /* and other goodies */
+                    }) => (
+                      <form onSubmit={handleSubmit}>
+
+                        <input
+                          type="text"
+                          name="username"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.username}
+                        />
+                        {errors.username && touched.username && errors.username}
+
+
+                        <input
+                          type="email"
+                          name="email"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.email}
+                        />
+                        {errors.email && touched.email && errors.email}
+
+                        <input
+                          type="password"
+                          name="password"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.password}
+                        />
+                        {errors.password && touched.password && errors.password}
+
+                        <input
+                          type="password"
+                          name="confirm_password"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.confirm_password}
+                        />
+                        {errors.confirm_password && touched.confirm_password && errors.confirm_password}
+
+                        <div>
+                          <input type="radio" name="gender" value={values.gender === 'male'} />
+                          <label for="male">Male</label>
+                          <input type="radio" name="gender" value={values.gender === 'female'} />
+                          <label for="female">Female</label>
+                          
+                        </div>
+
+                        <input
+                          type="textarea"
+                          name="address"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.address}
+                        />
+
+
+
+                        <button type="submit" disabled={isSubmitting}>
+                          Submit
+                        </button>
+                      </form>
+                    )}
+                  </Formik>
             
           </div>
         </div>
