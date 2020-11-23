@@ -1,11 +1,14 @@
 import React from 'react'
 import "./register.css";
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
+import {Link} from 'react-router-dom';
+import Footer from '../Footer';
 
 class Register extends React.Component {
   render () {
+
     return (
-      <div className="container-fluid register h-100" >
+      <div className="container-fluid register h-100" style={{marginTop: "10vh"}} >
         <div className="row">
           <div className="col-md-3 register-left">
             <img
@@ -20,7 +23,7 @@ class Register extends React.Component {
           </div>
           <div className="col-md-9 register-right">
 
-            <h1 style={{fontWeight: "bold"}}>Register</h1>
+            <h1 style={{fontWeight: "bold", marginTop: "20px"}}>Register</h1>
 
             <Formik
             initialValues ={{
@@ -28,7 +31,7 @@ class Register extends React.Component {
               email: '',
               password: '',
               confirm_password: '',
-              gender: '',
+              gender: 'Male',
               address: '',
             }}
 
@@ -77,64 +80,87 @@ class Register extends React.Component {
                       isSubmitting,
                       /* and other goodies */
                     }) => (
-                      <form onSubmit={handleSubmit}>
+                      <form onSubmit={handleSubmit} className="p-5">
 
-                        <input
-                          type="text"
-                          name="username"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.username}
-                        />
-                        {errors.username && touched.username && errors.username}
+                        <div className="form-group">
+                          <label for="username">Username</label>
+                          <input
+                            className="form-control"
+                            type="text"
+                            name="username"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.username}
+                          />
+                          <small className="form-text text-danger">{errors.username && touched.username && errors.username}</small> 
+                        </div>
+
+                        <div className="form-group">
+                        <label for="email">Email</label>
+                          <input
+                            className="form-control"
+                            type="email"
+                            name="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                          />
+                          <small className="form-text text-danger">{errors.email && touched.email && errors.email}</small> 
+                        </div>
+
+                        <div className="form-group">
+                        <label for="password">Password</label>
+                          <input
+                            className="form-control"
+                            type="password"
+                            name="password"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                          />
+                          <small className="form-text text-danger">{errors.password && touched.password && errors.password}</small> 
+                        </div>
 
 
-                        <input
-                          type="email"
-                          name="email"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.email}
-                        />
-                        {errors.email && touched.email && errors.email}
+                        <div className="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                          <input
+                            className="form-control"
+                            type="password"
+                            name="confirm_password"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.confirm_password}
+                          />
+                         <small className="form-text text-danger">{errors.confirm_password && touched.confirm_password && errors.confirm_password}</small> 
+                        </div>
 
-                        <input
-                          type="password"
-                          name="password"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.password}
-                        />
-                        {errors.password && touched.password && errors.password}
-
-                        <input
-                          type="password"
-                          name="confirm_password"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.confirm_password}
-                        />
-                        {errors.confirm_password && touched.confirm_password && errors.confirm_password}
-
-                        <div>
-                          <input type="radio" name="gender" value={values.gender === 'male'} />
-                          <label for="male">Male</label>
-                          <input type="radio" name="gender" value={values.gender === 'female'} />
-                          <label for="female">Female</label>
+                        <div role="group" aria-labelledby="my-radio-group">
+                          <label>
+                            <Field type="radio" name="gender" value="Male" />
+                            Male
+                          </label>
+                          <label>
+                            <Field type="radio" name="gender" value="Female" />
+                            Female
+                          </label>
                           
                         </div>
 
-                        <input
-                          type="textarea"
-                          name="address"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.address}
-                        />
+                        <div className="form-group flex">
+                        <label for="address">Address</label>
+                          <input
+                            className="form-control"
+                            type="textarea"
+                            name="address"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.address}
+                          />
+                        </div>
 
-
-
-                        <button type="submit" disabled={isSubmitting}>
+                        <Link to="/" className="btn btn-danger mr-3">Cancel</Link>
+                        <button className="btn btn-primary " type="submit" disabled={isSubmitting}>
                           Submit
                         </button>
                       </form>

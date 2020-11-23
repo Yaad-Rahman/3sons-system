@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Footer from '../Footer'
 
 export default class BCS extends Component {
     render() {
@@ -26,6 +27,8 @@ export default class BCS extends Component {
                         </div>
                     </div>
                 </div>
+
+                <Footer fixed="fixed-bottom" />
 
 
             </div>

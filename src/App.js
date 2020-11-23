@@ -1,43 +1,50 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import Front from './components/front-page';
 import BCS from './components/About BCS';
 import Profile from './components/User-profile';
 import Register from './components/Register';
-import Navbar from './components/Navbar';
+import TopBar from './components/Navbar';
 import Footer from './components/Footer';
 import JobAid from './components/Job-Aid';
+import Login from './components/Register/login';
 
 
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
-      <Navbar />
+      <TopBar />
         <Switch>
-          <Route path="/" exact>
-            <Front />
+          <Route path="/" component={Front} exact>
           </Route>
-          <Route path="/about-bcs" exact>
-            <BCS />
+
+          <Route path="/register" component={Register} exact>
           </Route>
-          <Route path="/profile" exact>
-            <Profile />
+
+          <Route path="/login" component={Login} exact>
           </Route>
-          <Route path="/register" exact>
-            <Register />
+
+          <Route path="/about-bcs" component={BCS} exact>
           </Route>
-          <Route path="/job-aid" exact>
-            <JobAid />
+          <Route path="/profile" component={Profile} exact>
+          </Route>
+          
+          <Route path="/job-aid" component={JobAid} exact>
           </Route>
         </Switch>
-        <Footer />
+        
       </Router>
 
     </div>
   );
+  
 }
+
+
+
 
 export default App;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Footer from '../Footer';
 import AboutUs from './About-Us';
 import ContactUs from './Contact-Us';
 
@@ -70,6 +71,8 @@ export default class Front extends Component {
                 <AboutUs />
 
                 <ContactUs />
+
+                <Footer />
 
             </div>
         )

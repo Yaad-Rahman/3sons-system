@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function Footer() {
+export default function Footer({fixed}) {
     return (
-        <div className="container-fluid  text-white py-5 mt-5" style={{background: "#0E131F",}}>
+        <div className={`container-fluid ${fixed}  text-white py-5`} style={{background: "#0E131F",}}>
             <div className="row">
                 <div className="col-sm-6">
                     <h3>3Sons System Limited</h3>
