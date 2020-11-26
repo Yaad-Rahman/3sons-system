@@ -1,17 +1,54 @@
 import React from 'react';
+import OnlineClass from './OnlineClass';
 import UserDetails from './UserDetails';
 import Zoom from './Zoom';
 
-const toggle = () => {
-  
-}
+
 
 
 class Profile extends React.Component {
   state ={
-    online: true,
+    online: "profile",
   }
+
+  toggle = () => {
+     this.setState({online: "profile"}); 
+  }
+
+  zoom = () => {
+    this.setState({online: "zoom"});
+  }
+
+  lectures = () => {
+    this.setState({online: "lecture"});
+  }
+
+  classNotes = () => {
+    this.setState({online: "classNotes"});
+  }
+
+  results = () => {
+    this.setState({online: "results"});
+  }
+
+  consult = () => {
+    this.setState({online: "consult"});
+  }
+
+
+  renderView = () => {
+    switch(this.state.online){
+      case "zoom":
+        return <Zoom />
+      case "lecture": 
+        return <OnlineClass />
+      default:
+        return <UserDetails />
+    }
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div className="container" style={{marginTop: "10vh"}}>
       <div className="main-body">
@@ -42,21 +79,21 @@ class Profile extends React.Component {
             </div>
             <div className="card mt-3">
               <ul className="list-group list-group-flush">
-                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.zoom}>
                   <h6 className="mb-0"><img src="/zoom-icon.png" height="30"  className="mr-3"/>  Zoom</h6>
                   <span className="text-secondary">Join Meeting</span>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.lectures}>
                   <h6 className="mb-0"><i className="fa fa-youtube mr-3" aria-hidden="true" ></i>View Lectures</h6>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onclick={this.classNotes}>
                   <h6 className="mb-0"><i className="fa fa-sticky-note-o mr-3" aria-hidden="true" ></i>Class Notes</h6>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.results}>
                   <h6 className="mb-0"><i className="fa fa-book mr-3" aria-hidden="true" ></i>Results</h6>
                   
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.consult}>
                   <h6 className="mb-0"><i className="fa fa-commenting-o mr-3" aria-hidden="true" ></i>Consult</h6>
                   <span className="text-secondary">consult with teachers</span>
                 </li>
@@ -64,7 +101,9 @@ class Profile extends React.Component {
             </div>
           </div>
           <div className="col-md-8">
-            
+            {
+              this.renderView()
+            }
                 
             
           </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import "./register.css";
 import { Formik, Field } from 'formik';
 import {Link} from 'react-router-dom';
-import Footer from '../Footer';
 
 class Register extends React.Component {
   render () {
@@ -13,7 +12,7 @@ class Register extends React.Component {
           <div className="col-md-3 register-left">
             <img
               src="https://image.ibb.co/n7oTvU/logo_white.png"
-              alt />
+              alt="welcome-logo" />
             <h3>Welcome</h3>
             <p>
               You are 30 seconds away from earning your own money!
@@ -54,7 +53,7 @@ class Register extends React.Component {
                 errors.password = "Password too Long";
               }
 
-              if(values.confirm_password != values.password){
+              if(values.confirm_password !== values.password){
                 errors.confirm_password = "Password not matched !";
               }
 
