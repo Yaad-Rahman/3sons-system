@@ -1,5 +1,6 @@
 import React from 'react';
 import OnlineClass from './OnlineClass';
+import Notes from './ClassNotes'
 import UserDetails from './UserDetails';
 import Zoom from './Zoom';
 
@@ -42,6 +43,8 @@ class Profile extends React.Component {
         return <Zoom />
       case "lecture": 
         return <OnlineClass />
+      case "classNotes":
+        return <Notes />
       default:
         return <UserDetails />
     }
@@ -86,7 +89,7 @@ class Profile extends React.Component {
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.lectures}>
                   <h6 className="mb-0"><i className="fa fa-youtube mr-3" aria-hidden="true" ></i>View Lectures</h6>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onclick={this.classNotes}>
+                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.classNotes}>
                   <h6 className="mb-0"><i className="fa fa-sticky-note-o mr-3" aria-hidden="true" ></i>Class Notes</h6>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap" onClick={this.results}>

@@ -6,11 +6,11 @@ export default class OnlineClass extends Component {
             <div className="card mb-3">
                 <div className="card-body">
                     <div className="card mb-2 flex-row align-items-center">
-                        <i className="fa fa-youtube-play p-1 m-5" aria-hidden="true" style={{fontSize: "100px", color: "red"}}></i>
+                        <i className="fa fa-youtube-play p-1 m-5" aria-hidden="true" style={{fontSize: "50px", color: "red"}}></i>
                         <div>
-                            <h2 className="card-title mt-2">
+                            <h5 className="card-title mt-2">
                                 sample class 1
-                            </h2>
+                            </h5>
                             <p className="card-body text-muted">    
                                 course contains ... ..
 
@@ -19,9 +19,9 @@ export default class OnlineClass extends Component {
                     </div>
 
                     <div className="card">
-                        <h2 className="card-title mt-2">
+                        <h5 className="card-title mt-2">
                             sample class 2
-                        </h2>
+                        </h5>
                         <p className="card-body text-muted">    
                             course contains ... ..
 
